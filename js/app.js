@@ -6,7 +6,7 @@ function app(){
 
     // uncomment the following line to cache CSS/JS files loaded by loader in localStorage
     // NOTE: you may need to turn this off while developing
-    // loader.textInjection = true;
+    loader.textInjection = true;
 
     // load some scripts (uses promises :D)
     loader.load(
@@ -17,9 +17,9 @@ function app(){
         {url: "./bower_components/lodash/lodash.min.js"},
 
         // when using just Backbone, use this line
-        {url: "./bower_components/backbone/backbone.js"},
+        // {url: "./bower_components/backbone/backbone.js"},
         // when using Parse, comment out the above line and uncomment the line below
-        // {url: "./bower_components/parse-js-sdk/lib/parse.min.js"},
+        {url: "./bower_components/parse-js-sdk/lib/parse.min.js"},
 
         // when using React (and the plugin JSnoX), uncomment the following two lines
         // {url: "./bower_components/react/react.min.js"},
@@ -27,7 +27,8 @@ function app(){
 
         // other stuff
         {url: "./bower_components/pace/pace.min.js"},
-        {url: "./js/TemplateView.js"}
+        {url: "./js/TemplateView.js"},
+        {url: "./js/toDoApp.js"}
     ).then(function(){
         // if turning on JSnoX, uncommment the following line
         // window.d = jsnox(React);
@@ -35,7 +36,9 @@ function app(){
         // React.initializeTouchEvents(true);
 
         document.querySelector("html").style.opacity = 1;
+        Parse.initialize("QDClqn2jpXEne5Kd4LC3369qCDHCXUyzak6D7RWu", "xy9eeBGEfr3Jq1hjFFe3x3HrELlTFWIOqermMbVE");
         // start app?
+        new Parse.TodoRouter();
     })
 
 }
